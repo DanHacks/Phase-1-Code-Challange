@@ -1,0 +1,64 @@
+{
+  "media": [
+    {
+      "id": "audio-1",
+      "title": "Song 1",
+      "type": "audio",
+      "url": "music/Song 1.mp3"
+    },
+    {
+      "id": "audio-2",
+      "title": "Song 2",
+      "type": "audio",
+      "url": "music/Song 2.mp3"
+    },
+    {
+      "id": "audio-3",
+      "title": "Song 3",
+      "type": "audio",
+      "url": "music/Song 3.mp3"
+    },
+    {
+      "id": "audio-4",
+      "title": "Song 4",
+      "type": "audio",
+      "url": "music/Song 4.mp3"
+    },
+    {
+      "id": "audio-5",
+      "title": "Song 5",
+      "type": "audio",
+      "url": "music/Song 5.mp3"
+    },
+    {
+      "id": "audio-6",
+      "title": "Song 6",
+      "type": "audio",
+      "url": "music/Song 6.mp3"
+    },
+    {
+      "id": "audio-7",
+      "title": "Song 7",
+      "type": "audio",
+      "url": "music/Song 7.mp3"
+    },
+    {
+      "id": "audio-8",
+      "title": "Song 8",
+      "type": "audio",
+      "url": "music/Song 8.mp3"
+    },
+    {
+      "id": "audio-9",
+      "title": "Song 9",
+      "type": "audio",
+      "url": "music/Song 9.mp3"
+    },
+    {
+      "id": "audio-10",
+      "title": "Song 10",
+      "type": "audio",
+      "url": "music/Song 10.mp3"
+    }
+  ]
+}
