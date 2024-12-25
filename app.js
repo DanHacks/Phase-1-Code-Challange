@@ -6,16 +6,22 @@ let currentlyPlayingAudio = null; // To track the currently playing audio
 // Fetch Media from db.json
 async function fetchMedia() {
     try {
-        const response = await fetch('db.json');
+        const response = await fetch('http://localhost:3000/media'); // Ensure the correct JSON server URL
         if (!response.ok) {
             throw new Error(`Failed to fetch media: ${response.statusText}`);
         }
         const data = await response.json();
-        return data.media || [];
+        return data || [];
     } catch (error) {
         console.error("Error fetching media:", error);
         return [];
     }
+}
+
+// Load All Songs on Page Load
+async function loadAllSongs() {
+    const media = await fetchMedia();
+    displayContent(media); // Display all media items by default
 }
 
 // Search and Display Content
@@ -32,9 +38,6 @@ async function searchContent() {
 
     // Filter results based on query
     const results = media.filter(item => item.title.toLowerCase().includes(query));
-
-    // Save results to localStorage for persistence
-    localStorage.setItem("searchResults", JSON.stringify(results));
 
     // Display results
     displayContent(results);
@@ -148,14 +151,5 @@ function displayContent(results) {
     });
 }
 
-// Reload State After Refresh
-function reloadState() {
-    const savedResults = localStorage.getItem("searchResults");
-    if (savedResults) {
-        const results = JSON.parse(savedResults);
-        displayContent(results);
-    }
-}
-
 // Initial Load
-document.addEventListener("DOMContentLoaded", reloadState);
+document.addEventListener("DOMContentLoaded", loadAllSongs);
