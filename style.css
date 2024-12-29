@@ -124,7 +124,7 @@ button {
     cursor: pointer;
     font-size: 14px;
     background-color: #007bff;
-    color: white;
+    color: rgb(93, 255, 93);
 }
 
 button:hover {
@@ -164,13 +164,13 @@ input[type="range"]::-webkit-slider-thumb {
     background: white;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 2px rgba(238, 97, 97, 0.7);
 }
 
 input[type="range"]::-moz-range-thumb {
     width: 12px;
     height: 12px;
-    background: white;
+    background: rgb(202, 50, 50);
     border: none;
     border-radius: 50%;
     cursor: pointer;

@@ -108,7 +108,7 @@ function displayContent(results) {
         volumeContainer.appendChild(volumeIcon);
         volumeContainer.appendChild(volumeSlider);
         contentItem.appendChild(poster);
-        contentItem.appendChild(title);
+        contentSItem.appendChild(title);
         contentItem.appendChild(audioElement);
         contentItem.appendChild(playButton);
         contentItem.appendChild(pauseButton);
@@ -116,6 +116,7 @@ function displayContent(results) {
         contentDisplay.appendChild(contentItem);
 
     });
+
 }
 
 document.addEventListener("DOMContentLoaded", loadAllSongs);
