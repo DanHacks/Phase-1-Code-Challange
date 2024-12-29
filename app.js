@@ -148,6 +148,7 @@ function displayContent(results) {
 
         // Append content item to the display
         contentDisplay.appendChild(contentItem);
+        
     });
 }
 

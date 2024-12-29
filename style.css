@@ -180,10 +180,11 @@ input[type="range"]::-moz-range-thumb {
 /* Responsive Design */
 @media (max-width: 768px) {
     .content-display {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust grid for smaller screens */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
     }
 
     input#search {
-        width: 90%; /* Expand search input for smaller screens */
+        width: 90%; 
+        
     }
 }
