@@ -78,6 +78,7 @@ function displayContent(results) {
             audioElement.pause();
             currentlyPlayingAudio = null;
             playButton.disabled = false;
+            
             pauseButton.disabled = true;
         };
         const volumeContainer = document.createElement("div");
