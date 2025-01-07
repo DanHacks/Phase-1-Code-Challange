@@ -1,6 +1,8 @@
 const contentDisplay = document.getElementById("content-display");
 const searchInput = document.getElementById("search");
 let currentlyPlayingAudio = null;
+
+// Fetch media data from db.json
 async function fetchMedia() {
     try {
         const response = await fetch('http://localhost:3000/media');
@@ -15,11 +17,13 @@ async function fetchMedia() {
     }
 }
 
+// Load all songs on page load
 async function loadAllSongs() {
     const media = await fetchMedia();
     displayContent(media);
 }
 
+// Search for songs based on the user's input
 async function searchContent() {
     const query = searchInput.value.trim().toLowerCase();
 
@@ -31,8 +35,10 @@ async function searchContent() {
     const media = await fetchMedia();
     const results = media.filter(item => item.title.toLowerCase().includes(query));
 
-    displayContent(results);}
+    displayContent(results);
+}
 
+// Display songs on the page
 function displayContent(results) {
     contentDisplay.innerHTML = "";
 
@@ -44,21 +50,29 @@ function displayContent(results) {
     results.forEach(item => {
         const contentItem = document.createElement("div");
         contentItem.className = "content-item";
+        
+        // Song Poster
         const poster = document.createElement("img");
         poster.src = "images/logo.png";
         poster.alt = "Song Poster";
         poster.style.width = "100px";
         poster.style.height = "100px";
+        
+        // Song Title
         const title = document.createElement("h3");
         title.textContent = item.title;
+        
+        // Audio Player
         const audioElement = document.createElement("audio");
         audioElement.src = item.url;
         audioElement.preload = "metadata";
+        
+        // Play Button
         const playButton = document.createElement("button");
         playButton.textContent = "Play";
         playButton.onclick = async () => {
             if (currentlyPlayingAudio && currentlyPlayingAudio !== audioElement) {
-                alert("Pause the current playing song first or refresh the page!.");
+                alert("Pause the current playing song first or refresh the page!");
                 return;
             }
 
@@ -71,6 +85,8 @@ function displayContent(results) {
                 console.error("Error playing audio:", error);
             }
         };
+        
+        // Pause Button
         const pauseButton = document.createElement("button");
         pauseButton.textContent = "Pause";
         pauseButton.disabled = true;
@@ -78,9 +94,10 @@ function displayContent(results) {
             audioElement.pause();
             currentlyPlayingAudio = null;
             playButton.disabled = false;
-            
             pauseButton.disabled = true;
         };
+
+        // Volume Controls
         const volumeContainer = document.createElement("div");
         volumeContainer.className = "volume-control";
         const volumeIcon = document.createElement("img");
@@ -88,6 +105,7 @@ function displayContent(results) {
         volumeIcon.alt = "Volume Icon";
         volumeIcon.style.width = "20px";
         volumeIcon.style.marginRight = "10px";
+
         const volumeSlider = document.createElement("input");
         volumeSlider.type = "range";
         volumeSlider.min = "0";
@@ -106,18 +124,18 @@ function displayContent(results) {
             }
         };
 
+        // Append elements
         volumeContainer.appendChild(volumeIcon);
         volumeContainer.appendChild(volumeSlider);
         contentItem.appendChild(poster);
-        contentSItem.appendChild(title);
+        contentItem.appendChild(title);
         contentItem.appendChild(audioElement);
         contentItem.appendChild(playButton);
         contentItem.appendChild(pauseButton);
         contentItem.appendChild(volumeContainer);
         contentDisplay.appendChild(contentItem);
-
     });
-
 }
 
+// Load all songs when the page loads
 document.addEventListener("DOMContentLoaded", loadAllSongs);
